@@ -21,13 +21,11 @@ export default function Home() {
     const signedPayload = await signedPayloadReq.json();
 
     try {
-      const nft = await signatureDrop?.signature.mint(
+      await signatureDrop?.signature.mint(
         signedPayload.signedPayload,
       );
-      return nft;
     } catch (err) {
       console.error(err);
-      return null;
     }
   };
 
