@@ -1,15 +1,12 @@
-import {
-  ConnectWallet,
-  useAddress,
-  useSignatureDrop,
-} from '@thirdweb-dev/react';
+import { ConnectWallet, useAddress, useContract } from '@thirdweb-dev/react';
 import { useState } from 'react';
 
 export default function Home() {
   const [amount, setAmount] = useState(0);
   const address = useAddress();
-  const signatureDrop = useSignatureDrop(
+  const { contract } = useContract(
     '0xEf582716Cb702948bb8cE259A37e9a1b21Adfd31',
+    'signature-drop',
   );
 
   const mint = async () => {
@@ -21,16 +18,18 @@ export default function Home() {
     const signedPayload = await signedPayloadReq.json();
 
     try {
-      await signatureDrop?.signature.mint(
-        signedPayload.signedPayload,
-      );
+      await contract.signature.mint(signedPayload.signedPayload);
     } catch (err) {
       console.error(err);
     }
   };
 
   if (!address) {
-    return <ConnectWallet />;
+    return (
+      <div style={{ width: '200px' }}>
+        <ConnectWallet />
+      </div>
+    );
   }
 
   return (
@@ -44,7 +43,7 @@ export default function Home() {
         onChange={(e) => setAmount(e.target.value)}
         value={amount}
       />
-      <button onClick={mint}>Mint NFT{amount > 1 && "s"}</button>
+      <button onClick={mint}>Mint NFT{amount > 1 && 's'}</button>
     </>
   );
 }

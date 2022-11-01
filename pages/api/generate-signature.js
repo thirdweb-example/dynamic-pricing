@@ -5,14 +5,15 @@ const handler = async (req, res) => {
 
   const sdk = ThirdwebSDK.fromPrivateKey(process.env.PRIVATE_KEY, 'goerli');
 
-  const signatureDrop = sdk.getSignatureDrop(
+  const contract = await sdk.getContract(
     '0xEf582716Cb702948bb8cE259A37e9a1b21Adfd31',
+    'signature-drop',
   );
 
-  const price = amount > 3 ? 0.2 : 0.25;
+  const price = amount >= 3 ? 0.2 : 0.25;
 
   try {
-    const signedPayload = await signatureDrop.signature.generate({
+    const signedPayload = await contract.signature.generate({
       to: address,
       price,
       quantity: amount,
