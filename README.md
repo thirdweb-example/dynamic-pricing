@@ -3,7 +3,7 @@
 Create a project using this example:
 
 ```bash
-npx thirdweb create --template next-javascript-starter
+npx thirdweb create --template dynamic-pricing
 ```
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
