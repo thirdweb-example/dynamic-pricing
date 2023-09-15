@@ -1,13 +1,21 @@
-import { ThirdwebSDK } from '@thirdweb-dev/sdk';
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import { SIGNATURE_DROP_ADDRESS } from "../../consts";
+import { NextApiRequest, NextApiResponse } from "next";
 
-const handler = async (req, res) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { address, amount } = JSON.parse(req.body);
 
-  const sdk = ThirdwebSDK.fromPrivateKey(process.env.PRIVATE_KEY, 'goerli');
+  const sdk = ThirdwebSDK.fromPrivateKey(
+    process.env.WALLET_PRIVATE_KEY!,
+    "goerli",
+    {
+      secretKey: process.env.TW_SECRET_KEY,
+    }
+  );
 
   const contract = await sdk.getContract(
-    '0xEf582716Cb702948bb8cE259A37e9a1b21Adfd31',
-    'signature-drop',
+    SIGNATURE_DROP_ADDRESS,
+    "signature-drop"
   );
 
   const price = amount >= 3 ? 0.2 : 0.25;
