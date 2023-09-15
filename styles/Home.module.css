@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 99vw;
+  padding: 80px 24px;
+}
+
+.container p {
+  margin-top: 20px;
+}

@@ -1,28 +1,61 @@
-## Getting Started
+# Signature Drop
 
-Create a project using this example:
+This example shows how you can use the [Signature Drop Pre-Built Contract](https://portal.thirdweb.com/pre-built-contracts/signature-drop) to create an NFT drop that allows users to mint an NFT at a discounted rate if they buy more than 2 at a time.
+
+## Installation
+
+Install the template with [thirdweb create](https://portal.thirdweb.com/cli/create)
 
 ```bash
 npx thirdweb create --template dynamic-pricing
 ```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Set up
 
-On `pages/_app.js`, you'll find our `ThirdwebProvider` wrapping your app, this is necessary for our hooks to work.
+- Create your own [Signature Drop](https://thirdweb.com/thirdweb.eth/SignatureDrop) via the [thirdweb dashboard](https://thirdweb.com/dashboard).
 
-on `pages/index.js`, you'll find the `useMetamask` hook that we use to connect the user's wallet to MetaMask, `useDisconnect` that we use to disconnect it, and `useAddress` to check the user's wallet address once connected. 
+- Add your contract address to the [`consts.ts`](/consts.ts) file.
 
-## Learn More
+### Environment Variables
 
-To learn more about thirdweb and Next.js, take a look at the following resources:
+To run this project, you will need to add the following environment variables to your .env file:
 
-- [thirdweb React Documentation](https://docs.thirdweb.com/react) - learn about our React SDK.
-- [thirdweb JavaScript Documentation](https://docs.thirdweb.com/react) - learn about our JavaScript/TypeScript SDK.
-- [thirdweb Portal](https://docs.thirdweb.com/react) - check our guides and development resources.
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+```bash
+NEXT_PUBLIC_TEMPLATE_CLIENT_ID=
+TW_SECRET_KEY=
+WALLET_PRIVATE_KEY=
+```
 
-You can check out [the thirdweb GitHub organization](https://github.com/thirdweb-dev) - your feedback and contributions are welcome!
+- Generate your `TW_SECRET_KEY` and `NEXT_PUBLIC_TEMPLATE_CLIENT_ID` via thirdweb's [dashboard](https://thirdweb.com/create-api-key).
+- For `WALLET_PRIVATE_KEY` export your wallet private key from your wallet.
 
-## Join our Discord!
+### Run Locally
 
-For any questions, suggestions, join our discord at [https://discord.gg/thirdweb](https://discord.gg/thirdweb).
+Install dependencies:
+
+```bash
+yarn
+```
+
+Start the server:
+
+```bash
+yarn start
+```
+
+## Additional Resources
+
+- [Documentation](https://portal.thirdweb.com)
+- [Templates](https://thirdweb.com/templates)
+- [Video Tutorials](https://youtube.com/thirdweb_)
+- [Blog](https://blog.thirdweb.com)
+
+## Contributing
+
+Contributions and [feedback](https://feedback.thirdweb.com) are always welcome!
+
+Please visit our [open source page](https://thirdweb.com/open-source) for more information.
+
+## Need help?
+
+For help, join the [discord](https://discord.gg/thirdweb) or visit our [support page](https://support.thirdweb.com).
